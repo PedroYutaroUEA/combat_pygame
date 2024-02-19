@@ -15,32 +15,16 @@ class Bullet(pygame.sprite.Sprite):
         self.direction = direction
         self.bounce_count = 0
         self.hits = 0
-<<<<<<< Updated upstream:test_bullet.py
-        self.move_x = self.direction[0]
-        self.move_y = self.direction[1]
-        self.colision_initial_time = time()
-        self.colision_final_time = time()
-
-
-    def update(self, walls, bullets):
-        self.colision_final_time = time()
-
-=======
         self.move_x = self.direction[0]/2
         self.move_y = self.direction[1]/2
         self.collision_initial_time = time()
         self.collision_final_time = time()
 
     def update(self, walls):
-        self.collision_final_time = time()
-        # handle movement
->>>>>>> Stashed changes:bullet.py
         self.rect.x += self.move_x * 1
         self.collision('horizontal', walls)
-
         self.rect.y += self.move_y * 1
         self.collision('vertical', walls)
-
         if self.hits >= 6:
             self.kill()
 
@@ -52,7 +36,6 @@ class Bullet(pygame.sprite.Sprite):
                         self.move_x *= -1
                         self.colision_initial_time = time()
                         self.hits += 1
-
         if direction == 'vertical':
             for wall in walls:
                 if self.colision_final_time - self.colision_initial_time > 0.1:
